@@ -57,8 +57,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 These are some of the design decisions taken during this project, some inspired by the project hints given where some are independent decisions.
 
-* Regarding compose a new tweet: When a tweet is composed, it is shown in timeline immediately, in the mean time, page is refreshed. Please note that composed tweet would be shown before page is refreshed.
-* Regarding favorite/unfavorite/retweet: Retweet and favorites counts, green/grey retweet icons, yellow/grey favorite icons are updated for the original tweet once the action is done, but page is not forced to be refreshed.
+* Regarding compose a new tweet: When a tweet is composed, it is shown in timeline immediately, in the mean time, the page is refreshed. Please note that composed tweet would be visible before page is refreshed.
+* Regarding favorite/unfavorite/retweet: Retweet and favorites counts, green/grey retweet icons, yellow/grey favorite icons are updated for the original tweet once the action is done, but full page refresh is not forced.
 * Regarding reply, once replied to a tweet, new tweet(reply tweet) will be added at the top of the timeline page but page is not forced to be refreshed.
 
 
@@ -71,7 +71,7 @@ These are some of the design decisions taken during this project, some inspired 
 
 ## License
 
-    Copyright [yyyy] [name of copyright owner]
+    Copyright [2015] [Esra Kucukoguz]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
