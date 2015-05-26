@@ -1,5 +1,5 @@
 # AndroidTwitterApp
-Android Twitter Clinet App is an android app that allows a Twitter user login to Twitter, view his Twitter timeline, post a new tweet, as well as retweet/reply/favorite/unfavorite tweets. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
+This app is an android app that allows a Twitter user login to Twitter, view his Twitter timeline, post a new tweet, as well as retweet/reply/favorite/unfavorite tweets. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public).
 
 Time spent: 50 hours spent in total
 
