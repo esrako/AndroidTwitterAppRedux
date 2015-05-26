@@ -38,9 +38,9 @@ The following **additional** features are implemented:
 * [x] Use of ViewHolder pattern and Parcelable to improve app performance
 * [x] Organizing the code through packages and externalizing all string resources into strings.xml
 * [x] Robust error handling, check if internet is available, handle error cases, network failures. Show Toast messages in case of mentioned error cases.
-* [x] User can **select "retweet" from detail view to retweet a tweet** which would result in retweet icon color to turn grey to green and retweet count to increment in both details page and timeline page for that tweet.
-* [x] User can **select "favorite" from detail view to favorite a tweet** which would result in favorite icon color to turn grey to yellow and favorites count to increment in both details page and timeline page for that tweet.
-* [x] User can **select "unfavorite" from detail view to unfavorite a tweet** which would result in favorite icon color to turn yellow to grey and favorites count to decrement in both details page and timeline page for that tweet.
+* [x] User can **select "retweet" from detail view or timeline to retweet a tweet** which would result in retweet icon color to turn grey to green and retweet count to increment in both details page and timeline page for that tweet.
+* [x] User can **select "favorite" from detail view or timeline to favorite a tweet** which would result in favorite icon color to turn grey to yellow and favorites count to increment in both details page and timeline page for that tweet.
+* [x] User can **select "unfavorite" from detail view or timeline to unfavorite a tweet** which would result in favorite icon color to turn yellow to grey and favorites count to decrement in both details page and timeline page for that tweet.
 * [x] User can see **retweet count** and **favorites count** for each tweet on timeline page and details page.
 * [x] User can see an indicator text to distinguish if the tweet is a **retweet** or a **reply** for each tweet on timeline.
 
