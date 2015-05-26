@@ -41,8 +41,8 @@ The following **additional** features are implemented:
 * [x] User can **select "retweet" from detail view to retweet a tweet** which would result in retweet icon color to turn grey to green and retweet count to increment in both details page and timeline page for that tweet.
 * [x] User can **select "favorite" from detail view to favorite a tweet** which would result in favorite icon color to turn grey to yellow and favorites count to increment in both details page and timeline page for that tweet.
 * [x] User can **select "unfavorite" from detail view to unfavorite a tweet** which would result in favorite icon color to turn yellow to grey and favorites count to decrement in both details page and timeline page for that tweet.
-* [x] User can see retweet count and favorites count for each tweet on timeline.
-* [x] User can see an indicator text to distinguish if the tweet is a retweet or a reply for each tweet on timeline.
+* [x] User can see **retweet count** and **favorites count** for each tweet on timeline page and details page.
+* [x] User can see an indicator text to distinguish if the tweet is a **retweet** or a **reply** for each tweet on timeline.
 
 
 ## Video Walkthrough 
@@ -55,7 +55,12 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+These are some of the design decisions taken during this project, some inspired by the project hints given where some are independent decisions.
+
+* Regarding compose a new tweet: When a tweet is composed, it is shown in timeline immediately, in the mean time, page is refreshed. Please note that composed tweet would be shown before page is refreshed.
+* Regarding favorite/unfavorite/retweet: Retweet and favorites counts, green/grey retweet icons, yellow/grey favorite icons are updated for the original tweet once the action is done, but page is not forced to be refreshed.
+* Regarding reply, once replied to a tweet, new tweet(reply tweet) will be added at the top of the timeline page but page is not forced to be refreshed.
+
 
 ## Open-source libraries used
 
