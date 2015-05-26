@@ -62,6 +62,8 @@ These are some of the design decisions taken during this project, some inspired 
 * Regarding reply, once replied to a tweet, new tweet(reply tweet) will be added at the top of the timeline page but page is not forced to be refreshed.
 
 
+## Additional screenshots from the app
+
 ## Open-source libraries used
 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
