@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Esra\'s Twitter</string>
+    <string name="login_label">Connect to Twitter</string>
+    <string name="title_activity_timeline">    Home</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="dummy">Dummy</string>
+    <string name="title_activity_compose">Compose</string>
+    <string name="tweet_hint">What\'s happening?</string>
+
+    <string name="tweet_too_long">Please make sure your tweet is at most 140 characters</string>
+    <string name="no_network">There is no network connection</string>
+    <string name="failed_to_fetch_tweets">Something went wrong with fetching tweets from Twitter.</string>
+
+    <string name="failed_to_tweet">Something went wrong with posting the tweet. Please try again later.</string>
+    <string name="success_on_posting_tweet">Tweet succesfully posted</string>
+    <string name="failed_to_reply_tweet">Something went wrong with replying to the tweet. Please try again later.</string>
+    <string name="success_on_posting_reply_tweet">Succesfully replied to the tweet</string>
+
+    <string name="failed_to_favorite">Something went wrong with favoriting the tweet. Please try again later.</string>
+    <string name="failed_to_unfavorite">Something went wrong with unfavoriting the tweet. Please try again later.</string>
+    <string name="success_on_favorite">Tweet succesfully favorited</string>
+    <string name="success_on_unfavorite">Tweet succesfully unfavorited</string>
+
+    <string name="failed_to_retweet">Something went wrong with retweeting. Please try again later.</string>
+    <string name="failed_to_unretweet">Something went wrong with un-retweeting. Please try again later.</string>
+    <string name="success_on_retweet">Succesfully retweeted</string>
+    <string name="success_on_unretweet">Succesfully un-retweeted</string>
+
+    <string name="image_load_failed">Failed to load the image</string>
+    <string name="image_load_succeded">Success loading the image</string>
+
+    <string name="title_activity_detail">Tweet</string>
+    <string name="title_dialog_reply">Reply</string>
+
+    <string name="retweets_label">RETWEETS</string>
+    <string name="favorites_label">FAVORITES</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tweet_button_label">TWEET</string>
+    <string name="in_reply_to_text">In reply to</string>
+    <string name="retweeted_text">retweeted</string>
+
+
+
+</resources>

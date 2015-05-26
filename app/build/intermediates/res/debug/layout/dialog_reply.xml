@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy"
+        android:alpha="0.5"
+        android:padding="10dp"
+        android:id="@+id/tvOrigBody" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:alpha="0.5"
+        android:padding="10dp"
+        android:id="@+id/tvInReplyTo" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etReplyBody"
+        android:text="@string/dummy" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tweet_button_label"
+        android:id="@+id/btTweet"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:background="#55acee"
+        android:textColor="#ffffff" />
+</LinearLayout><!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/layout/dialog_reply.xml -->

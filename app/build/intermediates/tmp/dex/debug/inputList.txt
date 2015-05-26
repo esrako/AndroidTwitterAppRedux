@@ -1,0 +1,11 @@
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\classes\debug
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\support-annotations-21.0.0-cc10de008290887fa629783806f07ad434774383.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\codepath-utils-26af81298c01ac311fd436c698968415532d03d6.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\codepath-oauth-0.4.1-6b99f390ef62f141e078f6f28c5f860ae1691016.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\activeandroid-3.1.0-SNAPSHOT-663dd79727bab4ddbee2b2c503e4edb699d46239.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\scribe-codepath-0.0.3-de31cf2d7c00ff142b0736a52d3fa2c0eb26dac2.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\android-async-http-1.4.6-021b101b7ec3e149772cea98218a5bdbf2c9d041.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\picasso-2.4.0-c005aac7984e01d397cb5870a21c9bb8cb6c1a3d.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\internal_impl-21.0.0-c45c65a60ef141dd0a5924ce68357162ed8a438f.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\classes-0702195641584df1901a478f9924f40e0ebb5add.jar
+C:\Users\ekucukog.ORADEV\AndroidStudioProjects\TwitterClient\app\build\intermediates\pre-dexed\debug\classes-f22685527b67732eb538156001d4b13206c3ce04.jar

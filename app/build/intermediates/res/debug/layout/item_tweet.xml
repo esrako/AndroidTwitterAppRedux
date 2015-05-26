@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy"
+        android:id="@+id/tvRetweetorReplyPreText"
+        android:alpha="0.5"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible"
+        android:layout_toRightOf="@+id/ivProfileImage"
+        android:layout_toEndOf="@+id/ivProfileImage" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/ivProfileImage"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:background="#ff3d91c4"
+        android:layout_marginRight="5dp"
+        android:layout_below="@+id/tvRetweetorReplyPreText" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy"
+        android:id="@+id/tvFullName"
+        android:textStyle="bold"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:layout_alignTop="@+id/tvUsername"
+        android:layout_toRightOf="@+id/ivProfileImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy"
+        android:id="@+id/tvUsername"
+        android:paddingLeft="5dp"
+        android:textSize="12sp"
+        android:layout_toRightOf="@+id/tvFullName"
+        android:layout_alignTop="@+id/ivProfileImage" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy"
+        android:id="@+id/tvTimestamp"
+        android:alpha="0.5"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/tvUsername" />
+
+    <com.codepath.apps.twitterclient.utils.LinkifiedTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dummy"
+        android:id="@+id/tvBody"
+        android:autoLink="all"
+        android:textSize="16sp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:layout_below="@+id/tvFullName"
+        android:layout_toRightOf="@+id/ivProfileImage"
+        android:paddingTop="5dp"
+        android:paddingBottom="10dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvReplyAction"
+        android:drawableLeft="@drawable/ic_reply_grey"
+        android:drawablePadding="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@+id/tvBody"
+        android:layout_alignLeft="@+id/tvBody"
+        android:layout_alignStart="@+id/tvBody"
+
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvRetweetAction"
+        android:drawableLeft="@drawable/ic_retweet_grey"
+        android:drawablePadding="10dp"
+        android:layout_toRightOf="@+id/tvReplyAction"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_below="@+id/tvBody" />
+
+    <TextView
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvFavsAction"
+        android:drawableLeft="@drawable/ic_star_grey"
+        android:drawablePadding="10dp"
+        android:layout_alignTop="@id/tvReplyAction"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        />
+
+</RelativeLayout><!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/layout/item_tweet.xml -->
