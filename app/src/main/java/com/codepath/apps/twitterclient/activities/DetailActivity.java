@@ -46,8 +46,6 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
     private TextView tvReplyAction;
     private TextView tvRetweetAction;
     private TextView tvFavsAction;
-    private boolean m_isFav = false;
-    private boolean m_isReteweeted = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -123,13 +121,11 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
         tvFavCount.setText(m_tweet.getFavorite_count()+ "  " + getResources().getString(R.string.favorites_label));
 
         if(m_tweet.isFavorited()){
-            m_isFav = true;
             Log.d("DEBUG", "this tweet is a favorite");
             tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_yellow, 0, 0, 0);
         }
 
         if(m_tweet.isRetweeted()){
-            m_isReteweeted = true;
             Log.d("DEBUG", "this tweet is a retweeted");
             tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green, 0, 0, 0);
         }
@@ -159,7 +155,7 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
 
                     long tweetID = m_tweet.getUid();
 
-                    if(!m_isReteweeted) {//not retweeted before, retweet now
+                    if(!m_tweet.isRetweeted()) {//not retweeted before, retweet now
 
                         tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green,0,0,0);
                         int newRC = m_tweet.getRetweet_count() + 1;
@@ -169,7 +165,6 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
                                 Log.d("DEBUG", jsonObject.toString());
-                                m_isReteweeted = true;
                                 tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green, 0, 0, 0);
                                 int newRC = m_tweet.getRetweet_count() + 1;
                                 tvRetweetCount.setText(newRC+ "  " + getResources().getString(R.string.retweets_label));
@@ -228,7 +223,7 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
 
                     long tweetID = m_tweet.getUid();
 
-                    if(!m_isFav) {//favorite
+                    if(!m_tweet.isFavorited()) {//favorite
 
                         tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_yellow,0,0,0);
                         int newFC = m_tweet.getFavorite_count() + 1;
@@ -239,7 +234,6 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
                                 Log.d("DEBUG", jsonObject.toString());
-                                m_isFav = true;
                                 tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_yellow, 0, 0, 0);
                                 int newFC = m_tweet.getFavorite_count() + 1;
                                 tvFavCount.setText(newFC+ "  " + getResources().getString(R.string.favorites_label));
@@ -268,7 +262,6 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
                                 Log.d("DEBUG", jsonObject.toString());
-                                m_isFav = false;
                                 tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_grey, 0, 0, 0);
                                 int newFC = m_tweet.getFavorite_count() - 1;
                                 tvFavCount.setText(newFC+ "  " + getResources().getString(R.string.favorites_label));

@@ -1,6 +1,9 @@
 package com.codepath.apps.twitterclient.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +11,22 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.codepath.apps.twitterclient.R;
+import com.codepath.apps.twitterclient.activities.DetailActivity;
+import com.codepath.apps.twitterclient.activities.TimelineActivity;
+import com.codepath.apps.twitterclient.dialogs.ReplyDialog;
 import com.codepath.apps.twitterclient.models.Tweet;
+import com.codepath.apps.twitterclient.tclient.TwitterApplication;
+import com.codepath.apps.twitterclient.tclient.TwitterClient;
 import com.codepath.apps.twitterclient.utils.LinkifiedTextView;
 import com.codepath.apps.twitterclient.utils.TwitterUtil;
+import com.loopj.android.http.JsonHttpResponseHandler;
 import com.squareup.picasso.Picasso;
+
+import org.apache.http.Header;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -23,6 +36,8 @@ import java.util.List;
 
 //Taking the Tweets objects and turning them into Views displayed in the list
 public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
+
+    private TwitterClient client;
 
     // View lookup cache
     private static class ViewHolder {
@@ -66,6 +81,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
         else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
+
         // 4 populate data into subviews
         viewHolder.tvUsername.setText( "@" + tweet.getUser().getScreenName());
         viewHolder.tvBody.setText(tweet.getBody());
@@ -80,7 +96,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
         if(tweet.isRetweet() && tweet.getRetweetingUser()!=null){//retweet
             Log.d("DEBUG", "retweeted by user:  " + tweet.getRetweetingUser().toString());
             viewHolder.tvRetweetorReplyPreText.setVisibility(View.VISIBLE);
-            viewHolder.tvRetweetorReplyPreText.setText(tweet.getRetweetingUser().getName() + " " + getContext().getResources().getString(R.string.retweeted_text) );
+            viewHolder.tvRetweetorReplyPreText.setText(tweet.getRetweetingUser().getName() + " " + getContext().getResources().getString(R.string.retweeted_text));
         }
         else if(tweet.getInReplyToScreenName()!=null){//reply
             Log.d("DEBUG", "In reply to user:  " + tweet.getInReplyToScreenName());
@@ -109,8 +125,165 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
         }
         viewHolder.tvFavsAction.setText("" + tweet.getFavorite_count());
 
+        // Get the client
+        client = (TwitterClient) TwitterApplication.getRestClient();//singleton client
+
+        setUpRetweetButtonListener(viewHolder, position);
+        setUpFavoriteButtonListener(viewHolder, position);
+        setUpReplyButtonListener(viewHolder, position);
 
         // 5 return the view to be inserted into list
         return convertView;
+    }
+
+    private void setUpRetweetButtonListener(final ViewHolder viewHolder, final int position){
+
+        viewHolder.tvRetweetAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("DEBUG", "Clicked to retweet");
+
+                if( !TwitterUtil.isThereNetworkConnection( getContext() )){
+                    Log.e("ERROR", "no network");
+                    Toast.makeText( getContext(), R.string.no_network, Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    Tweet tweet = (Tweet) getItem(position);
+                    long tweetID = tweet.getUid();
+
+                    if(!tweet.isRetweeted()) {//not retweeted before, retweet now
+
+                        viewHolder.tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green,0,0,0);
+                        int newRC = tweet.getRetweet_count() + 1;
+                        viewHolder.tvRetweetAction.setText("" + newRC);
+
+                        client.retweet(tweetID, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                                Log.d("DEBUG", jsonObject.toString());
+                                viewHolder.tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green, 0, 0, 0);
+                                Tweet tweet = (Tweet) getItem(position);
+                                int newRC = tweet.getRetweet_count() + 1;
+                                viewHolder.tvRetweetAction.setText("" + newRC);
+                                tweet.setRetweeted(true);
+                                tweet.setRetweet_count(newRC);
+
+                                Toast.makeText( getContext(), R.string.success_on_retweet, Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                Log.e("ERROR", errorResponse.toString());
+                                viewHolder.tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_grey, 0, 0, 0);
+                                Tweet tweet = (Tweet) getItem(position);
+                                viewHolder.tvRetweetAction.setText("" + tweet.getRetweet_count());
+
+                                Toast.makeText( getContext(), R.string.failed_to_retweet, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    private void setUpFavoriteButtonListener(final ViewHolder viewHolder, final int position){
+
+        viewHolder.tvFavsAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("DEBUG", "Clicked to star");
+
+                if( !TwitterUtil.isThereNetworkConnection( getContext())){
+                    Log.e("ERROR", "no network");
+                    Toast.makeText( getContext(), R.string.no_network, Toast.LENGTH_LONG).show();
+                }
+                else {
+
+                    Tweet tweet = (Tweet) getItem(position);
+                    long tweetID = tweet.getUid();
+
+                    if(!tweet.isFavorited()) {//it is not favorited yet, go and favorite
+
+                        viewHolder.tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_yellow,0,0,0);
+                        int newFC = tweet.getFavorite_count() + 1;
+                        viewHolder.tvFavsAction.setText("" + newFC);
+
+                        client.makeFavorite(tweetID, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                                Log.d("DEBUG", jsonObject.toString());
+                                viewHolder.tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_yellow, 0, 0, 0);
+                                Tweet tweet = (Tweet) getItem(position);
+                                int newFC = tweet.getFavorite_count() + 1;
+                                viewHolder.tvFavsAction.setText("" + newFC);
+                                tweet.setFavorited(true);
+                                tweet.setFavorite_count(newFC);
+                                Toast.makeText(getContext(), R.string.success_on_favorite, Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                Log.e("ERROR", errorResponse.toString());
+                                viewHolder.tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_grey, 0, 0, 0);
+                                Tweet tweet = (Tweet) getItem(position);
+                                viewHolder.tvFavsAction.setText("" + tweet.getFavorite_count());
+                                Toast.makeText(getContext(), R.string.failed_to_favorite, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                    else{//unfavorite
+
+                        viewHolder.tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_grey,0,0,0);
+                        int newFC = tweet.getFavorite_count() - 1;
+                        viewHolder.tvFavsAction.setText("" + newFC);
+
+                        client.removeFavorite(tweetID, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                                Log.d("DEBUG", jsonObject.toString());
+                                viewHolder.tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_grey, 0, 0, 0);
+                                Tweet tweet = (Tweet) getItem(position);
+                                int newFC = tweet.getFavorite_count() - 1;
+                                viewHolder.tvFavsAction.setText("" + newFC);
+                                tweet.setFavorited(false);
+                                tweet.setFavorite_count(newFC);
+
+                                Toast.makeText(getContext(), R.string.success_on_unfavorite, Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                Log.e("ERROR", errorResponse.toString());
+                                viewHolder.tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_yellow, 0, 0, 0);
+                                Tweet tweet = (Tweet) getItem(position);
+                                viewHolder.tvFavsAction.setText("" + tweet.getFavorite_count());
+                                Toast.makeText(getContext(), R.string.failed_to_unfavorite, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
+                }
+            }
+        });
+    }
+
+    private void setUpReplyButtonListener(final ViewHolder viewHolder, final int position){
+        viewHolder.tvReplyAction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("DEBUG", "Clicked to reply");
+                Tweet tweet = getItem(position);
+                showReplyDialog(tweet, viewHolder);
+            }
+        });
+    }
+
+    public void showReplyDialog(Tweet tweet, ViewHolder viewHolder) {
+        FragmentActivity activity = (FragmentActivity)viewHolder.tvReplyAction.getContext();
+        FragmentManager fm = activity.getSupportFragmentManager();
+        ReplyDialog replyDialog = ReplyDialog.newInstance(tweet, getContext().getResources().getString(R.string.title_dialog_reply));
+        replyDialog.show(fm, "fragment_reply");
     }
 }

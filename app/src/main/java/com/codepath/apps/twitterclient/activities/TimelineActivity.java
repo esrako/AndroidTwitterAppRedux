@@ -1,6 +1,7 @@
 package com.codepath.apps.twitterclient.activities;
 
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 import com.activeandroid.query.Delete;
 import com.codepath.apps.twitterclient.R;
 import com.codepath.apps.twitterclient.adapters.TweetsArrayAdapter;
+import com.codepath.apps.twitterclient.dialogs.ReplyDialog;
 import com.codepath.apps.twitterclient.listeners.EndlessScrollListener;
 import com.codepath.apps.twitterclient.models.Tweet;
 import com.codepath.apps.twitterclient.models.User;
@@ -29,7 +31,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class TimelineActivity extends ActionBarActivity {
+public class TimelineActivity extends ActionBarActivity implements ReplyDialog.ReplyDialogListener{
     private TwitterClient client;
     private ArrayList<Tweet> tweets;
     private TweetsArrayAdapter aTweets;
@@ -306,5 +308,18 @@ public class TimelineActivity extends ActionBarActivity {
                 }
             });
         }
+    }
+
+    @Override
+    public void onFinishReplyDialog(Tweet replyTweet) {
+        Log.d("DEBUG", "onFinishFilterDialog: reply is done replyTweet is " + replyTweet.toString());
+        Toast.makeText(this, replyTweet.toString(), Toast.LENGTH_SHORT).show();
+
+        tweets.add(0, replyTweet);
+        replyTweet.save();
+        aTweets.notifyDataSetChanged();
+
+        //refresh page
+        //populateTimeline(TwitterUtil.REFRESH_PAGE, 1);
     }
 }
