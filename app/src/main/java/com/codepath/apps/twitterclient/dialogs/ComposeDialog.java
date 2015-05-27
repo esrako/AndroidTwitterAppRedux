@@ -76,7 +76,7 @@ public class ComposeDialog extends DialogFragment {
         getDialog().setTitle(title);
 
         //Show soft keyboard automatically
-        getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
+        //getDialog().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_VISIBLE);
         //full screen
         //getDialog().getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         getDialog().getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -113,6 +113,7 @@ public class ComposeDialog extends DialogFragment {
             rluser.setVisibility(View.INVISIBLE);
             Log.d("DEBUG", "user is null");
         }
+        tvChCount.setText(MAX_TWEET_LENGTH + "");
         etNewTweet.requestFocus();
     }
 
@@ -150,41 +151,49 @@ public class ComposeDialog extends DialogFragment {
 
     private void setUpTweetButtonListener(){
 
-        if( !TwitterUtil.isThereNetworkConnection(getActivity())){
-            Log.e("ERROR", "no network");
-            Toast.makeText(getActivity(), getResources().getString(R.string.no_network), Toast.LENGTH_LONG).show();
-        }
-        else if(m_length > MAX_TWEET_LENGTH){
+        btTweet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-            Toast.makeText(getActivity(), getResources().getString(R.string.tweet_too_long), Toast.LENGTH_LONG).show();
-        }
-        else{
-
-            String newTweetBody = etNewTweet.getText().toString();
-
-            client.postTweet(newTweetBody, new JsonHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
-                    Log.d("DEBUG", jsonObject.toString());
-                    Toast.makeText( getActivity() , getResources().getString(R.string.success_on_posting_tweet), Toast.LENGTH_SHORT).show();
-
-                    Tweet tweet = Tweet.fromJson(jsonObject);
-                    Log.d("DEBUG", tweet.toString());
-                    Toast.makeText( getActivity() , "tweet", Toast.LENGTH_SHORT).show();
-
-                    ComposeDialogListener listener = (ComposeDialogListener) getActivity();
-                    listener.onFinishComposeDialog(tweet);
-                    dismiss();
+                if( !TwitterUtil.isThereNetworkConnection(getActivity())){
+                    Log.e("ERROR", "no network");
+                    Toast.makeText(getActivity(), getResources().getString(R.string.no_network), Toast.LENGTH_LONG).show();
                 }
+                else if(m_length > MAX_TWEET_LENGTH){
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    //Toast.makeText(  , "failed on posting new tweet", Toast.LENGTH_SHORT).show();
-                    Log.e("ERROR", errorResponse.toString());
-                    Toast.makeText(getActivity(), getResources().getString(R.string.failed_to_tweet), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getActivity(), getResources().getString(R.string.tweet_too_long), Toast.LENGTH_LONG).show();
                 }
-            });
-        }
+                else{
+
+                    String newTweetBody = etNewTweet.getText().toString();
+
+                    client.postTweet(newTweetBody, new JsonHttpResponseHandler() {
+                        @Override
+                        public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                            Log.d("DEBUG", jsonObject.toString());
+                            Toast.makeText( getActivity() , getResources().getString(R.string.success_on_posting_tweet), Toast.LENGTH_SHORT).show();
+
+                            Tweet tweet = Tweet.fromJson(jsonObject);
+                            Log.d("DEBUG", tweet.toString());
+                            //Toast.makeText( getActivity() , "tweet", Toast.LENGTH_SHORT).show();
+
+                            ComposeDialogListener listener = (ComposeDialogListener) getActivity();
+                            listener.onFinishComposeDialog(tweet);
+                            dismiss();
+                        }
+
+                        @Override
+                        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                            //Toast.makeText(  , "failed on posting new tweet", Toast.LENGTH_SHORT).show();
+                            Log.e("ERROR", errorResponse.toString());
+                            Toast.makeText(getActivity(), getResources().getString(R.string.failed_to_tweet), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+            }
+        });
+
+
     }
 
     private void setUpCloseButtonListener(){

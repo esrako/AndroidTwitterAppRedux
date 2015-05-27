@@ -219,10 +219,10 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
         if(TwitterUtil.getCurrentUser()==null)
             fetchCurrentUserInfo();
 
-        Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
-        startActivityForResult(i, REQUEST_CODE_COMPOSE);
+        //Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
+        //startActivityForResult(i, REQUEST_CODE_COMPOSE);
 
-        //showComposeDialog();
+        showComposeDialog();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -334,11 +334,11 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
 
         if(tweet==null){
             Log.d("DEBUG", "User closed the dialog without submitting tweet - tweet is null - OK");
-            Toast.makeText(this, "Dialog closed without submitting a tweet", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, "Dialog closed without submitting a tweet", Toast.LENGTH_SHORT).show();
 
         }else {
             Log.d("DEBUG", "onFinishComposeDialog: new tweet is " + tweet.toString());
-            Toast.makeText(this, tweet.toString(), Toast.LENGTH_SHORT).show();
+            //Toast.makeText(this, tweet.toString(), Toast.LENGTH_SHORT).show();
 
             tweets.add(0, tweet);
             tweet.save();
