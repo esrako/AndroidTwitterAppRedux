@@ -48,9 +48,15 @@ The following **additional** features are implemented:
 
 ## Video Walkthrough 
 
-Here's a walkthrough of implemented user stories:
+I have two walkthroughs of implemented user stories. The difference is that the first walkthrough has the Compose Activity that has a more Twitter look, where the second one has Compose DialogFragmnet instead of Activity but it does not look like Twitter's own Compose Fragment.
 
-<img src='https://github.com/esrako/AndroidTwitterApp/blob/master/project3_01.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+Walkthrough 1
+
+<img src='https://github.com/esrako/AndroidTwitterApp/blob/master/project3_01.gif' title='Video Walkthrough 1' width='' alt='Video Walkthrough' />
+
+Walkthrough 2
+
+<img src='https://github.com/esrako/AndroidTwitterApp/blob/master/project3_02.gif' title='Video Walkthrough 1' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
