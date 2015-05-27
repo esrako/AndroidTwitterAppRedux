@@ -68,6 +68,11 @@ These are some of the design decisions taken during this project, some inspired 
 * Regarding favorite/unfavorite/retweet: Retweet and favorites counts, green/grey retweet icons, yellow/grey favorite icons are updated for the original tweet once the action is done, but full page refresh is not forced.
 * Regarding reply, once replied to a tweet, new tweet(reply tweet) will be added at the top of the timeline page but page is not forced to be refreshed.
 
+## To-Do
+
+* Fix un-retweet: To retweet send "id_str" of the original tweet, to undo the retweet, send "id_str" of the response from retweet.
+
+
 ## Open-source libraries used
 
 - [RestClient Template](https://github.com/codepath/android-rest-client-template) - Android OAuth REST Client 
