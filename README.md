@@ -31,7 +31,7 @@ The following **optional** features are implemented:
 The following **bonus** features are implemented:
 
 * [x] User can see embedded image media within the tweet detail view
-* [ ] IN_PROGRESS - Compose tweet functionality is build using modal overlay.
+* [ ] Compose tweet functionality is build using modal overlay - IN PROGRESS
 
 The following **additional** features are implemented:
 
@@ -44,13 +44,13 @@ The following **additional** features are implemented:
 * [x] User can **select "unfavorite" from detail view or timeline to unfavorite a tweet** which would result in favorite icon color to turn from yellow to grey and favorites count to decrement in both details page and timeline page for that tweet.
 * [x] User can see **retweet count** and **favorites count** for each tweet on timeline page and details page.
 * [x] User can see an indicator text to distinguish if the tweet is a **retweet** or a **reply** for each tweet on timeline.
-
+* [x] User can **select "un-retweet" from detail view or timeline to un-retweet a tweet** which would result in retweet icon color to turn from green to grey and retweet count to decrement in both details page and timeline page for that tweet.
 
 ## Video Walkthrough 
 
 Here's a walkthrough of implemented user stories:
 
-<img src='http://i.imgur.com/link/to/your/gif/file.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://github.com/esrako/AndroidTwitterApp/blob/master/project3_01.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
@@ -61,9 +61,6 @@ These are some of the design decisions taken during this project, some inspired 
 * Regarding compose a new tweet: When a tweet is composed, it is shown in timeline immediately, in the mean time, the page is refreshed. Please note that composed tweet would be visible before page is refreshed.
 * Regarding favorite/unfavorite/retweet: Retweet and favorites counts, green/grey retweet icons, yellow/grey favorite icons are updated for the original tweet once the action is done, but full page refresh is not forced.
 * Regarding reply, once replied to a tweet, new tweet(reply tweet) will be added at the top of the timeline page but page is not forced to be refreshed.
-
-
-## Additional screenshots from the app
 
 ## Open-source libraries used
 
