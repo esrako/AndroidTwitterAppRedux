@@ -2,6 +2,7 @@ package com.codepath.apps.twitterclient.models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.util.Log;
 
 import com.activeandroid.Model;
 import com.activeandroid.TableInfo;
@@ -74,6 +75,9 @@ public class Tweet extends Model implements Parcelable {
     @Column(name = "isretweet")
     private boolean isRetweet = false;
 
+    @Column(name = "currentuserretweetIDstr")
+    private String current_user_retweet_id_str = null;
+
     public Tweet() {
         super();
     }
@@ -87,6 +91,11 @@ public class Tweet extends Model implements Parcelable {
         Tweet tweet = new Tweet();
         //Extract the values from json, store them
         try {
+
+            if( jsonObject.optJSONObject("current_user_retweet") !=null ){
+                tweet.current_user_retweet_id_str = jsonObject.getJSONObject("current_user_retweet").getString("id_str");
+                Log.d("DEBUG", "retweet is found: " + tweet.current_user_retweet_id_str);
+            }
 
             if(jsonObject.optJSONObject("retweeted_status")!=null){//retweet
                 tweet.retweetingUser = User.findOrCreateFromJson(jsonObject.getJSONObject("user"));
@@ -275,17 +284,13 @@ public class Tweet extends Model implements Parcelable {
         this.retweeted = retweeted;
     }
 
+    public String getCurrent_user_retweet_id_str() {
+        return current_user_retweet_id_str;
+    }
 
-
-/*@Override
-    public String toString() {
-        return "Tweet{" +
-                "body='" + body + '\'' +
-                ", uid=" + uid +
-                ", user=" + user.getScreenName() +
-                ", createdAt='" + createdAt + '\'' +
-                '}';
-    }*/
+    public void setCurrent_user_retweet_id_str(String current_user_retweet_id_str) {
+        this.current_user_retweet_id_str = current_user_retweet_id_str;
+    }
 
     @Override
     public String toString() {
@@ -305,6 +310,7 @@ public class Tweet extends Model implements Parcelable {
                 ", inReplyToScreenName='" + inReplyToScreenName + '\'' +
                 ", retweetingUser=" + retweetingUser +
                 ", isRetweet=" + isRetweet +
+                ", current_user_retweet_id_str='" + current_user_retweet_id_str + '\'' +
                 '}';
     }
 
@@ -316,6 +322,7 @@ public class Tweet extends Model implements Parcelable {
         }
         return null;
     }
+
 
     @Override
     public int describeContents() {
@@ -339,6 +346,7 @@ public class Tweet extends Model implements Parcelable {
         dest.writeString(this.inReplyToScreenName);
         dest.writeParcelable(this.retweetingUser, 0);
         dest.writeByte(isRetweet ? (byte) 1 : (byte) 0);
+        dest.writeString(this.current_user_retweet_id_str);
     }
 
     private Tweet(Parcel in) {
@@ -357,6 +365,7 @@ public class Tweet extends Model implements Parcelable {
         this.inReplyToScreenName = in.readString();
         this.retweetingUser = in.readParcelable(User.class.getClassLoader());
         this.isRetweet = in.readByte() != 0;
+        this.current_user_retweet_id_str = in.readString();
     }
 
     public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {

@@ -151,6 +151,7 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
 
                     Tweet tweet = (Tweet) getItem(position);
                     long tweetID = tweet.getUid();
+                    String retweetIDstr = tweet.getCurrent_user_retweet_id_str();
 
                     if(!tweet.isRetweeted()) {//not retweeted before, retweet now
 
@@ -162,12 +163,15 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
                                 Log.d("DEBUG", jsonObject.toString());
+
                                 viewHolder.tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green, 0, 0, 0);
                                 Tweet tweet = (Tweet) getItem(position);
                                 int newRC = tweet.getRetweet_count() + 1;
                                 viewHolder.tvRetweetAction.setText("" + newRC);
                                 tweet.setRetweeted(true);
                                 tweet.setRetweet_count(newRC);
+                                Tweet updatedTweet = Tweet.fromJson(jsonObject);
+                                tweet.setCurrent_user_retweet_id_str(updatedTweet.getCurrent_user_retweet_id_str());
 
                                 Toast.makeText( getContext(), R.string.success_on_retweet, Toast.LENGTH_SHORT).show();
                             }
@@ -182,6 +186,43 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
                                 Toast.makeText( getContext(), R.string.failed_to_retweet, Toast.LENGTH_LONG).show();
                             }
                         });
+                    }
+                    else if (retweetIDstr!=null){//was already retweeted, now destroy retweet
+
+                        Log.d("DEBUG", "retweet id str: " + retweetIDstr);
+                        viewHolder.tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_grey,0,0,0);
+                        int newRC = tweet.getRetweet_count() - 1;
+                        viewHolder.tvRetweetAction.setText("" + newRC);
+
+                        client.destroyRetweet(retweetIDstr, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                                Log.d("DEBUG", jsonObject.toString());
+
+                                viewHolder.tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_grey, 0, 0, 0);
+
+                                Tweet tweet = (Tweet) getItem(position);
+                                int newRC = tweet.getRetweet_count() - 1;
+                                viewHolder.tvRetweetAction.setText("" + newRC);
+                                tweet.setRetweeted(false);
+                                tweet.setRetweet_count(newRC);
+                                Toast.makeText(getContext(), R.string.success_on_unretweet, Toast.LENGTH_SHORT).show();
+
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                Log.e("ERROR", errorResponse.toString());
+                                viewHolder.tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green, 0, 0, 0);
+                                Tweet tweet = (Tweet) getItem(position);
+                                viewHolder.tvRetweetAction.setText("" + tweet.getRetweet_count());
+                                Toast.makeText( getContext(), R.string.failed_to_unretweet, Toast.LENGTH_LONG).show();
+                            }
+                        });
+
+                    }else{
+                        Log.d("DEBUG", "retweet id was null");
+                        Toast.makeText( getContext(), R.string.failed_to_unretweet, Toast.LENGTH_LONG).show();
                     }
                 }
             }

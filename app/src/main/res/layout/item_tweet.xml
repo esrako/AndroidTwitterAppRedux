@@ -42,8 +42,12 @@
         android:id="@+id/tvUsername"
         android:paddingLeft="5dp"
         android:textSize="12sp"
+        android:singleLine="true"
+        android:ellipsize="end"
         android:layout_toRightOf="@+id/tvFullName"
-        android:layout_alignTop="@+id/ivProfileImage" />
+        android:layout_alignTop="@+id/ivProfileImage"
+        android:layout_toLeftOf="@+id/tvTimestamp"
+        android:layout_toStartOf="@+id/tvTimestamp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -94,14 +98,14 @@
         android:layout_below="@+id/tvBody" />
 
     <TextView
-        android:layout_width="60dp"
+        android:layout_width="75dp"
         android:layout_height="wrap_content"
         android:id="@+id/tvFavsAction"
         android:drawableLeft="@drawable/ic_star_grey"
         android:drawablePadding="10dp"
         android:layout_alignTop="@id/tvReplyAction"
         android:layout_alignParentRight="true"
-        android:layout_marginRight="30dp"
+        android:layout_marginRight="15dp"
         />
 
 </RelativeLayout>

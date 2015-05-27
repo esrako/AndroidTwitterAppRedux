@@ -16,6 +16,7 @@ import android.widget.Toast;
 import com.activeandroid.query.Delete;
 import com.codepath.apps.twitterclient.R;
 import com.codepath.apps.twitterclient.adapters.TweetsArrayAdapter;
+import com.codepath.apps.twitterclient.dialogs.ComposeDialog;
 import com.codepath.apps.twitterclient.dialogs.ReplyDialog;
 import com.codepath.apps.twitterclient.listeners.EndlessScrollListener;
 import com.codepath.apps.twitterclient.models.Tweet;
@@ -31,7 +32,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class TimelineActivity extends ActionBarActivity implements ReplyDialog.ReplyDialogListener{
+public class TimelineActivity extends ActionBarActivity implements ReplyDialog.ReplyDialogListener, ComposeDialog.ComposeDialogListener{
     private TwitterClient client;
     private ArrayList<Tweet> tweets;
     private TweetsArrayAdapter aTweets;
@@ -105,7 +106,7 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Intent i = new Intent(TimelineActivity.this, DetailActivity.class);
-                i.putExtra("tweet", (Tweet)parent.getItemAtPosition(position));
+                i.putExtra("tweet", (Tweet) parent.getItemAtPosition(position));
                 startActivityForResult(i, REQUEST_CODE_DETAIL);
             }
         });
@@ -125,13 +126,16 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
         if( !TwitterUtil.isThereNetworkConnection(this)){
             Log.e("ERROR", "no network");
             if (refType == TwitterUtil.SWIPE) {
+                Log.d("DEBUG", "swipe");
                 swipeContainer.setRefreshing(false);
             }
             if( refType != TwitterUtil.SCROLL){
+                Log.d("DEBUG", "not a scroll");
                 Toast.makeText(this, R.string.no_network, Toast.LENGTH_LONG).show();
             }
             if( refType == TwitterUtil.NEW_PAGE) {
 
+                Log.d("DEBUG", "new page");
                 //first time open the page(blank page) & no network -> load tweets from local db
                 usingLocalData = true;
                 aTweets.addAll(Tweet.getAllFromDB());
@@ -217,6 +221,8 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
 
         Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
         startActivityForResult(i, REQUEST_CODE_COMPOSE);
+
+        //showComposeDialog();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -226,11 +232,11 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
 
             if(m_tweet==null){
                 Log.e("ERROR", "onActivityResult tweet received is null");
-                Toast.makeText(this, "compose activity returned a null tweet", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "compose activity returned a null tweet", Toast.LENGTH_SHORT).show();
             }
             else{
                 Log.i("DEBUG", "onActivityResult got the tweet back " + m_tweet.toString());
-                Toast.makeText(this, m_tweet.toString(), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, m_tweet.toString(), Toast.LENGTH_SHORT).show();
 
                 //Before refreshing the page, we put the just composed tweet into the adapter
                 //because refreshing the page might take time
@@ -248,7 +254,7 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
 
             if(tweetChanged==null && replyTweet==null){
                 Log.e("ERROR", "onActivityResult updated tweet received is null");
-                Toast.makeText(this, "detail activity returned a null changed tweet and reply tweet - OK ", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, "detail activity returned a null changed tweet and reply tweet - OK ", Toast.LENGTH_SHORT).show();
             }
             else{
 
@@ -265,14 +271,14 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
                         tweetToBeUpdated.setFavorited(tweetChanged.isFavorited());
                         tweetToBeUpdated.setRetweet_count(tweetChanged.getRetweet_count());
                         tweetToBeUpdated.setRetweeted(tweetChanged.isRetweeted());
-
+                        tweetToBeUpdated.setCurrent_user_retweet_id_str(tweetChanged.getCurrent_user_retweet_id_str());
                         aTweets.notifyDataSetChanged();
                     }
                 }
 
                 if(replyTweet!=null){
                         Log.i("DEBUG", "onActivityResult got the reply tweet back " + replyTweet.toString());
-                        Toast.makeText(this, replyTweet.toString(), Toast.LENGTH_SHORT).show();
+                        //Toast.makeText(this, replyTweet.toString(), Toast.LENGTH_SHORT).show();
 
                         tweets.add(0, replyTweet);
                         replyTweet.save();
@@ -312,8 +318,8 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
 
     @Override
     public void onFinishReplyDialog(Tweet replyTweet) {
-        Log.d("DEBUG", "onFinishFilterDialog: reply is done replyTweet is " + replyTweet.toString());
-        Toast.makeText(this, replyTweet.toString(), Toast.LENGTH_SHORT).show();
+        Log.d("DEBUG", "onFinishReplyDialog: reply is done replyTweet is " + replyTweet.toString());
+        //Toast.makeText(this, replyTweet.toString(), Toast.LENGTH_SHORT).show();
 
         tweets.add(0, replyTweet);
         replyTweet.save();
@@ -321,5 +327,31 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
 
         //refresh page
         //populateTimeline(TwitterUtil.REFRESH_PAGE, 1);
+    }
+
+    @Override
+    public void onFinishComposeDialog(Tweet tweet) {
+
+        if(tweet==null){
+            Log.d("DEBUG", "User closed the dialog without submitting tweet - tweet is null - OK");
+            Toast.makeText(this, "Dialog closed without submitting a tweet", Toast.LENGTH_SHORT).show();
+
+        }else {
+            Log.d("DEBUG", "onFinishComposeDialog: new tweet is " + tweet.toString());
+            Toast.makeText(this, tweet.toString(), Toast.LENGTH_SHORT).show();
+
+            tweets.add(0, tweet);
+            tweet.save();
+            aTweets.notifyDataSetChanged();
+
+            //refresh page
+            populateTimeline(TwitterUtil.REFRESH_PAGE, 1);
+        }
+    }
+
+    private void showComposeDialog() {
+        FragmentManager fm = getSupportFragmentManager();
+        ComposeDialog composeDialog = ComposeDialog.newInstance( getResources().getString(R.string.title_dialog_compose));
+        composeDialog.show(fm, "fragment_reply");
     }
 }

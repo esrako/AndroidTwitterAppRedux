@@ -59,6 +59,7 @@ public class TwitterClient extends OAuthBaseClient {
             //if(refreshType == TwitterUtil.SWIPE)
             params.put("since_id", 1);// get the most recent 25
         }
+        params.put("include_my_retweet", true);
 
         //Execute the request
         getClient().get(apiUrl,params, handler);
@@ -89,16 +90,16 @@ public class TwitterClient extends OAuthBaseClient {
         String apiUrl = getApiUrl("statuses/retweet/" + originalTweetID  + ".json");
         // Can specify query string params directly or through RequestParams.
         RequestParams params = new RequestParams();
+        //params.put("include_my_retweet", true);/////
 
         //Execute the request
         getClient().post(apiUrl, params, handler);
     }
 
-    public void unRetweet(long originalTweetID, AsyncHttpResponseHandler handler) {
-        String apiUrl = getApiUrl("statuses/retweet.json");
+    public void destroyRetweet(String retweetIDstr, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/destroy/" + retweetIDstr + ".json");
         // Can specify query string params directly or through RequestParams.
         RequestParams params = new RequestParams();
-        params.put("id", originalTweetID);
 
         //Execute the request
         getClient().post(apiUrl, params, handler);

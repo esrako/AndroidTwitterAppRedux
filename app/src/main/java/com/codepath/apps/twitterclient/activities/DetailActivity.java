@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -105,7 +104,7 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
                         @Override
                         public void onSuccess() {
                             Log.i("DEBUG", getResources().getString(R.string.image_load_succeded));
-                            Toast.makeText(DetailActivity.this, "Loaded", Toast.LENGTH_SHORT).show();
+                            //Toast.makeText(DetailActivity.this, "Loaded", Toast.LENGTH_SHORT).show();
                         }
 
                         @Override
@@ -154,8 +153,10 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
                 else {
 
                     long tweetID = m_tweet.getUid();
+                    String retweetIDstr = m_tweet.getCurrent_user_retweet_id_str();
 
-                    if(!m_tweet.isRetweeted()) {//not retweeted before, retweet now
+                    if(!m_tweet.isRetweeted()) {//not ret
+                    // weeted before, retweet now
 
                         tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green,0,0,0);
                         int newRC = m_tweet.getRetweet_count() + 1;
@@ -165,6 +166,10 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
                                 Log.d("DEBUG", jsonObject.toString());
+
+                                Tweet updatedTweet = Tweet.fromJson(jsonObject);
+                                m_tweet.setCurrent_user_retweet_id_str(updatedTweet.getCurrent_user_retweet_id_str());
+
                                 tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green, 0, 0, 0);
                                 int newRC = m_tweet.getRetweet_count() + 1;
                                 tvRetweetCount.setText(newRC+ "  " + getResources().getString(R.string.retweets_label));
@@ -184,26 +189,40 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
                             }
                         });
                     }
-                    /*else{//was already retweeted, now destroy retweet
+                    else if (retweetIDstr!=null){//was already retweeted, now destroy retweet
 
-                        client.destroyRetweet(tweetID, new JsonHttpResponseHandler() {
+                        Log.d("DEBUG", "retweet id str: " + retweetIDstr);
+                        tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_grey,0,0,0);
+                        int newRC = m_tweet.getRetweet_count() - 1;
+                        tvRetweetCount.setText(newRC+ "  " + getResources().getString(R.string.retweets_label));
+
+                        client.destroyRetweet(retweetIDstr, new JsonHttpResponseHandler() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
                                 Log.d("DEBUG", jsonObject.toString());
-                                m_isReteweeted = false;
                                 tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_grey, 0, 0, 0);
+
+                                int newRC = m_tweet.getRetweet_count() - 1;
+                                tvRetweetCount.setText(newRC+ "  " + getResources().getString(R.string.retweets_label));
+                                m_tweet.setRetweeted(false);
+                                m_tweet.setRetweet_count(newRC);
                                 Toast.makeText(DetailActivity.this, getResources().getString(R.string.success_on_unretweet), Toast.LENGTH_SHORT).show();
+
                             }
 
                             @Override
                             public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                                 Log.e("ERROR", errorResponse.toString());
                                 tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green, 0, 0, 0);
+                                tvRetweetCount.setText(m_tweet.getRetweet_count() + "  " + getResources().getString(R.string.retweets_label));
                                 Toast.makeText(DetailActivity.this, getResources().getString(R.string.failed_to_unretweet), Toast.LENGTH_LONG).show();
                             }
                         });
 
-                    }*/
+                    }else{
+                        Log.d("DEBUG", "retweet id was null");
+                        Toast.makeText(DetailActivity.this, getResources().getString(R.string.failed_to_unretweet), Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
@@ -294,9 +313,9 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
 
     @Override
     public void onFinishReplyDialog(Tweet newTweet) {
-        Log.d("DEBUG", "onFinishFilterDialog: reply is done replyTweet is " + newTweet.toString());
+        Log.d("DEBUG", "onFinishReplyDialog: reply is done replyTweet is " + newTweet.toString());
         m_newTweet = newTweet;
-        Toast.makeText(this, "Dialog returning reply tweet: " + m_newTweet.toString(), Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, "Dialog returning reply tweet: " + m_newTweet.toString(), Toast.LENGTH_SHORT).show();
     }
 
 

@@ -1309,15 +1309,16 @@ containing a value of this type.
         public static final int abc_textfield_search_material=0x7f020032;
         public static final int ic_ab_compose=0x7f020033;
         public static final int ic_ab_twitter=0x7f020034;
-        public static final int ic_launcher=0x7f020035;
-        public static final int ic_launcher_twitter=0x7f020036;
-        public static final int ic_reply_green=0x7f020037;
-        public static final int ic_reply_grey=0x7f020038;
-        public static final int ic_retweet_green=0x7f020039;
-        public static final int ic_retweet_grey=0x7f02003a;
-        public static final int ic_star_grey=0x7f02003b;
-        public static final int ic_star_yellow=0x7f02003c;
-        public static final int placeholder=0x7f02003d;
+        public static final int ic_close=0x7f020035;
+        public static final int ic_launcher=0x7f020036;
+        public static final int ic_launcher_twitter=0x7f020037;
+        public static final int ic_reply_green=0x7f020038;
+        public static final int ic_reply_grey=0x7f020039;
+        public static final int ic_retweet_green=0x7f02003a;
+        public static final int ic_retweet_grey=0x7f02003b;
+        public static final int ic_star_grey=0x7f02003c;
+        public static final int ic_star_yellow=0x7f02003d;
+        public static final int placeholder=0x7f02003e;
     }
     public static final class id {
         public static final int action_bar=0x7f090033;
@@ -1333,12 +1334,12 @@ containing a value of this type.
         public static final int action_mode_bar=0x7f090030;
         public static final int action_mode_bar_stub=0x7f09002f;
         public static final int action_mode_close_button=0x7f090022;
-        public static final int action_settings=0x7f09005b;
+        public static final int action_settings=0x7f09005d;
         public static final int activity_chooser_view_content=0x7f090023;
         public static final int always=0x7f090016;
         public static final int beginning=0x7f090013;
         public static final int bottom=0x7f09001e;
-        public static final int btTweet=0x7f090057;
+        public static final int btTweet=0x7f090055;
         public static final int checkbox=0x7f09002b;
         public static final int collapseActionView=0x7f090017;
         public static final int decor_content_parent=0x7f090031;
@@ -1349,7 +1350,7 @@ containing a value of this type.
         public static final int edit_query=0x7f090035;
         public static final int end=0x7f090014;
         public static final int etNewTweet=0x7f090045;
-        public static final int etReplyBody=0x7f090056;
+        public static final int etReplyBody=0x7f090059;
         public static final int expand_activities_button=0x7f090024;
         public static final int expanded_menu=0x7f09002a;
         public static final int home=0x7f090004;
@@ -1363,8 +1364,8 @@ containing a value of this type.
         public static final int listMode=0x7f090009;
         public static final int list_item=0x7f090027;
         public static final int lvTweets=0x7f090053;
-        public static final int miCompose=0x7f09005a;
-        public static final int miCounter=0x7f090059;
+        public static final int miCompose=0x7f09005c;
+        public static final int miCounter=0x7f09005b;
         public static final int middle=0x7f090015;
         public static final int never=0x7f090019;
         public static final int none=0x7f09000e;
@@ -1395,17 +1396,19 @@ containing a value of this type.
         public static final int title=0x7f090029;
         public static final int top=0x7f09001f;
         public static final int tvBody=0x7f090049;
+        public static final int tvChCount=0x7f090056;
+        public static final int tvCross=0x7f090054;
         public static final int tvCurrentFullName=0x7f090043;
         public static final int tvCurrentUsername=0x7f090044;
         public static final int tvFavCount=0x7f09004c;
         public static final int tvFavsAction=0x7f09004f;
         public static final int tvFullName=0x7f090047;
-        public static final int tvInReplyTo=0x7f090055;
-        public static final int tvOrigBody=0x7f090054;
+        public static final int tvInReplyTo=0x7f090058;
+        public static final int tvOrigBody=0x7f090057;
         public static final int tvReplyAction=0x7f09004d;
         public static final int tvRetweetAction=0x7f09004e;
         public static final int tvRetweetCount=0x7f09004b;
-        public static final int tvRetweetorReplyPreText=0x7f090058;
+        public static final int tvRetweetorReplyPreText=0x7f09005a;
         public static final int tvTimestamp=0x7f09004a;
         public static final int tvUsername=0x7f090048;
         public static final int up=0x7f090008;
@@ -1444,9 +1447,10 @@ containing a value of this type.
         public static final int activity_detail=0x7f040018;
         public static final int activity_login=0x7f040019;
         public static final int activity_timeline=0x7f04001a;
-        public static final int dialog_reply=0x7f04001b;
-        public static final int item_tweet=0x7f04001c;
-        public static final int support_simple_spinner_dropdown_item=0x7f04001d;
+        public static final int dialog_compose=0x7f04001b;
+        public static final int dialog_reply=0x7f04001c;
+        public static final int item_tweet=0x7f04001d;
+        public static final int support_simple_spinner_dropdown_item=0x7f04001e;
     }
     public static final class menu {
         public static final int login=0x7f0d0000;
@@ -1503,10 +1507,11 @@ containing a value of this type.
         public static final int title_activity_compose=0x7f0b0029;
         public static final int title_activity_detail=0x7f0b002a;
         public static final int title_activity_timeline=0x7f0b002b;
-        public static final int title_dialog_reply=0x7f0b002c;
-        public static final int tweet_button_label=0x7f0b002d;
-        public static final int tweet_hint=0x7f0b002e;
-        public static final int tweet_too_long=0x7f0b002f;
+        public static final int title_dialog_compose=0x7f0b002c;
+        public static final int title_dialog_reply=0x7f0b002d;
+        public static final int tweet_button_label=0x7f0b002e;
+        public static final int tweet_hint=0x7f0b002f;
+        public static final int tweet_too_long=0x7f0b0030;
     }
     public static final class style {
         /**  API 14 theme customizations can go here. 

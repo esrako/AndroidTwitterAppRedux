@@ -210,6 +210,7 @@
     <string name="title_activity_compose">Compose</string>
     <string name="title_activity_detail">Tweet</string>
     <string name="title_activity_timeline">    Home</string>
+    <string name="title_dialog_compose">Compose</string>
     <string name="title_dialog_reply">Reply</string>
     <string name="tweet_button_label">TWEET</string>
     <string name="tweet_hint">What\'s happening?</string>

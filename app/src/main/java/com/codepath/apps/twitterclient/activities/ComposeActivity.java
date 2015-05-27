@@ -77,7 +77,7 @@ public class ComposeActivity extends ActionBarActivity {
 
             Picasso.with(this).load(m_user.getProfileImageUrl())
                     .into(ivCurrentProfile);
-        }else{
+        }else{//just in case something went wrong with getting current user, do not let app crash
             RelativeLayout rluser = (RelativeLayout) findViewById(R.id.rluser);
             rluser.setVisibility(View.INVISIBLE);
             Log.d("DEBUG", "user is null");
@@ -146,7 +146,6 @@ public class ComposeActivity extends ActionBarActivity {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    //Toast.makeText(  , "failed on posting new tweet", Toast.LENGTH_SHORT).show();
                     Log.e("ERROR", errorResponse.toString());
                     Toast.makeText(ComposeActivity.this, getResources().getString(R.string.failed_to_tweet), Toast.LENGTH_LONG).show();
                 }
