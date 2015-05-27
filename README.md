@@ -70,6 +70,7 @@ These are some of the design decisions taken during this project, some inspired 
 
 ## Open-source libraries used
 
+- [RestClient Template](https://github.com/codepath/android-rest-client-template) - Android OAuth REST Client 
 - [Android Async HTTP](https://github.com/loopj/android-async-http) - Simple asynchronous HTTP requests with JSON parsing
 - [Picasso](http://square.github.io/picasso/) - Image loading and caching library for Android
 
