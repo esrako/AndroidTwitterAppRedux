@@ -38,13 +38,13 @@ The following **additional** features are implemented:
 * [x] Use of ViewHolder pattern and Parcelable to improve app performance
 * [x] Organizing the code through packages and externalizing all string resources into strings.xml
 * [x] Robust error handling, check if internet is available, handle error cases, network failures. Show Toast messages in case of mentioned error cases.
-* [x] User can **select "reply" from timeline to respond to a tweet** which takes user to a dialog fragment. Upon posting the reply, user is taken back to home timeline with **new reply tweet visible** in timeline
-* [x] User can **select "retweet" from detail view or timeline to retweet a tweet** which would result in retweet icon color to turn from grey to green and retweet count to increment in both details page and timeline page for that tweet.
-* [x] User can **select "favorite" from detail view or timeline to favorite a tweet** which would result in favorite icon color to turn from grey to yellow and favorites count to increment in both details page and timeline page for that tweet.
-* [x] User can **select "unfavorite" from detail view or timeline to unfavorite a tweet** which would result in favorite icon color to turn from yellow to grey and favorites count to decrement in both details page and timeline page for that tweet.
 * [x] User can see **retweet count** and **favorites count** for each tweet on timeline page and details page.
 * [x] User can see an indicator text to distinguish if the tweet is a **retweet** or a **reply** for each tweet on timeline.
-* [x] User can **select "un-retweet" from detail view or timeline to un-retweet a tweet** which would result in retweet icon color to turn from green to grey and retweet count to decrement in both details page and timeline page for that tweet.
+* [x] User can **select "reply" from timeline to respond to a tweet** which takes user to a dialog fragment. Upon posting the reply, user is taken back to home timeline with **new reply tweet visible** in timeline
+* [x] User can **select "retweet" from detail view or timeline** to retweet a tweet which would result in retweet icon color to turn from grey to green and retweet count to increment in both details page and timeline page for that tweet.
+* [x] User can **select "favorite" from detail view or timeline** to favorite a tweet which would result in favorite icon color to turn from grey to yellow and favorites count to increment in both details page and timeline page for that tweet.
+* [x] User can **select "unfavorite" from detail view or timeline** to unfavorite a tweet which would result in favorite icon color to turn from yellow to grey and favorites count to decrement in both details page and timeline page for that tweet.
+* [x] User can **select "un-retweet" from detail view or timeline** to undo a retweet which would result in retweet icon color to turn from green to grey and retweet count to decrement in both details page and timeline page for that tweet. Please note that un-retweet is supported only on a fresh page for now.
 
 ## Video Walkthrough 
 
