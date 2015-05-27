@@ -44,7 +44,7 @@ The following **additional** features are implemented:
 * [x] User can **select "retweet" from detail view or timeline** to retweet a tweet which would result in retweet icon color to turn from grey to green and retweet count to increment in both details page and timeline page for that tweet.
 * [x] User can **select "favorite" from detail view or timeline** to favorite a tweet which would result in favorite icon color to turn from grey to yellow and favorites count to increment in both details page and timeline page for that tweet.
 * [x] User can **select "unfavorite" from detail view or timeline** to unfavorite a tweet which would result in favorite icon color to turn from yellow to grey and favorites count to decrement in both details page and timeline page for that tweet.
-* [x] User can **select "un-retweet" from detail view or timeline** to undo a retweet which would result in retweet icon color to turn from green to grey and retweet count to decrement in both details page and timeline page for that tweet. Please note that un-retweet is supported only on a fresh page for now.
+* [x] User can **select "un-retweet" from detail view or timeline** to undo a retweet which would result in retweet icon color to turn from green to grey and retweet count to decrement in both details page and timeline page for that tweet. Please note that for now un-retweet is supported only on previously retweeted tweets, immediately back to back retweet-unretweet is not suported. Back to back unretweet-retweet is supported.
 
 ## Video Walkthrough 
 
