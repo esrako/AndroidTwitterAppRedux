@@ -171,7 +171,8 @@ public class TweetsArrayAdapter extends ArrayAdapter<Tweet>{
                                 tweet.setRetweeted(true);
                                 tweet.setRetweet_count(newRC);
                                 Tweet updatedTweet = Tweet.fromJson(jsonObject);
-                                tweet.setCurrent_user_retweet_id_str(updatedTweet.getCurrent_user_retweet_id_str());
+                                //tweet.setCurrent_user_retweet_id_str(updatedTweet.getCurrent_user_retweet_id_str());
+                                tweet.setCurrent_user_retweet_id_str(updatedTweet.getId_str_x());
 
                                 Toast.makeText( getContext(), R.string.success_on_retweet, Toast.LENGTH_SHORT).show();
                             }

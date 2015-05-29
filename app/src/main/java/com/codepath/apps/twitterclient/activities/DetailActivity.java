@@ -168,7 +168,8 @@ public class DetailActivity extends ActionBarActivity implements ReplyDialog.Rep
                                 Log.d("DEBUG", jsonObject.toString());
 
                                 Tweet updatedTweet = Tweet.fromJson(jsonObject);
-                                m_tweet.setCurrent_user_retweet_id_str(updatedTweet.getCurrent_user_retweet_id_str());
+                                //m_tweet.setCurrent_user_retweet_id_str(updatedTweet.getCurrent_user_retweet_id_str());
+                                m_tweet.setCurrent_user_retweet_id_str(updatedTweet.getId_str_x());
 
                                 tvRetweetAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_retweet_green, 0, 0, 0);
                                 int newRC = m_tweet.getRetweet_count() + 1;

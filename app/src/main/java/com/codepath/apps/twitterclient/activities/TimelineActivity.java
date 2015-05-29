@@ -219,10 +219,10 @@ public class TimelineActivity extends ActionBarActivity implements ReplyDialog.R
         if(TwitterUtil.getCurrentUser()==null)
             fetchCurrentUserInfo();
 
-        //Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
-        //startActivityForResult(i, REQUEST_CODE_COMPOSE);
+        Intent i = new Intent(TimelineActivity.this, ComposeActivity.class);
+        startActivityForResult(i, REQUEST_CODE_COMPOSE);
 
-        showComposeDialog();
+        //showComposeDialog();
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

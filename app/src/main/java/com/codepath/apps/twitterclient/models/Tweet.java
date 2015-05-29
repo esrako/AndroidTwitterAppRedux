@@ -78,6 +78,9 @@ public class Tweet extends Model implements Parcelable {
     @Column(name = "currentuserretweetIDstr")
     private String current_user_retweet_id_str = null;
 
+    @Column(name = "idstr")
+    private String id_str_x = null;
+
     public Tweet() {
         super();
     }
@@ -96,6 +99,7 @@ public class Tweet extends Model implements Parcelable {
                 tweet.current_user_retweet_id_str = jsonObject.getJSONObject("current_user_retweet").getString("id_str");
                 Log.d("DEBUG", "retweet is found: " + tweet.current_user_retweet_id_str);
             }
+            tweet.id_str_x = jsonObject.getString("id_str");
 
             if(jsonObject.optJSONObject("retweeted_status")!=null){//retweet
                 tweet.retweetingUser = User.findOrCreateFromJson(jsonObject.getJSONObject("user"));
@@ -292,6 +296,14 @@ public class Tweet extends Model implements Parcelable {
         this.current_user_retweet_id_str = current_user_retweet_id_str;
     }
 
+    public void setId_str_x(String id_str_x) {
+        this.id_str_x = id_str_x;
+    }
+
+    public String getId_str_x() {
+        return id_str_x;
+    }
+
     @Override
     public String toString() {
         return "Tweet{" +
@@ -311,6 +323,7 @@ public class Tweet extends Model implements Parcelable {
                 ", retweetingUser=" + retweetingUser +
                 ", isRetweet=" + isRetweet +
                 ", current_user_retweet_id_str='" + current_user_retweet_id_str + '\'' +
+                ", id_str_x='" + id_str_x + '\'' +
                 '}';
     }
 
@@ -322,7 +335,6 @@ public class Tweet extends Model implements Parcelable {
         }
         return null;
     }
-
 
     @Override
     public int describeContents() {
@@ -347,6 +359,7 @@ public class Tweet extends Model implements Parcelable {
         dest.writeParcelable(this.retweetingUser, 0);
         dest.writeByte(isRetweet ? (byte) 1 : (byte) 0);
         dest.writeString(this.current_user_retweet_id_str);
+        dest.writeString(this.id_str_x);
     }
 
     private Tweet(Parcel in) {
@@ -366,6 +379,7 @@ public class Tweet extends Model implements Parcelable {
         this.retweetingUser = in.readParcelable(User.class.getClassLoader());
         this.isRetweet = in.readByte() != 0;
         this.current_user_retweet_id_str = in.readString();
+        this.id_str_x = in.readString();
     }
 
     public static final Creator<Tweet> CREATOR = new Creator<Tweet>() {
