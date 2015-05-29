@@ -44,7 +44,7 @@ The following **additional** features are implemented:
 * [x] User can **select "retweet" from detail view or timeline** to retweet a tweet which would result in retweet icon color to turn from grey to green and retweet count to increment in both details page and timeline page for that tweet.
 * [x] User can **select "favorite" from detail view or timeline** to favorite a tweet which would result in favorite icon color to turn from grey to yellow and favorites count to increment in both details page and timeline page for that tweet.
 * [x] User can **select "unfavorite" from detail view or timeline** to unfavorite a tweet which would result in favorite icon color to turn from yellow to grey and favorites count to decrement in both details page and timeline page for that tweet.
-* [x] User can **select "un-retweet" from detail view or timeline** to undo a retweet which would result in retweet icon color to turn from green to grey and retweet count to decrement in both details page and timeline page for that tweet. Please note that for now un-retweet is supported only on previously retweeted tweets, immediately back to back retweet-unretweet is not suported. Back to back unretweet-retweet is supported.
+* [x] User can **select "un-retweet" from detail view or timeline** to undo a retweet which would result in retweet icon color to turn from green to grey and retweet count to decrement in both details page and timeline page for that tweet.
 * [x] Vertically **scrollable** detail view. 
 
 ## Video Walkthrough 
@@ -68,11 +68,6 @@ These are some of the design decisions taken during this project, some inspired 
 * Regarding compose a new tweet: When a tweet is composed, it is shown in timeline immediately, in the mean time, the page is refreshed. Please note that composed tweet would be visible before page is refreshed.
 * Regarding favorite/unfavorite/retweet: Retweet and favorites counts, green/grey retweet icons, yellow/grey favorite icons are updated for the original tweet once the action is done, but full page refresh is not forced.
 * Regarding reply, once replied to a tweet, new tweet(reply tweet) will be added at the top of the timeline page but page is not forced to be refreshed.
-
-## To-Do
-
-* Fix un-retweet: To retweet send "id_str" of the original tweet, to undo the retweet, send "id_str" of the response from retweet.
-
 
 ## Open-source libraries used
 
