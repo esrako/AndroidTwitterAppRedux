@@ -1,0 +1,17 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.codepath.apps.twitterplus.activities.ProfileActivity">
+
+
+    <item
+        android:id="@+id/miActionProgress"
+        android:title="Loading..."
+        android:visible="false"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom"
+        app:actionLayout="@layout/action_view_progress" />
+
+
+</menu>
+<!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/menu/menu_profile.xml -->

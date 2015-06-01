@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.codepath.apps.twitterclient"
+    package="com.codepath.apps.twitterplus"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -59,14 +59,21 @@
             android:label="@string/title_activity_compose" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.codepath.apps.twitterclient.activities.TimelineActivity" />
+                android:value="com.codepath.apps.twitterplus.activities.TimelineActivity" />
         </activity>
         <activity
             android:name=".activities.DetailActivity"
             android:label="@string/title_activity_detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.codepath.apps.twitterclient.activities.TimelineActivity" />
+                android:value="com.codepath.apps.twitterplus.activities.TimelineActivity" />
+        </activity>
+        <activity
+            android:name=".activities.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codepath.apps.twitterplus.activities.TimelineActivity" />
         </activity>
     </application>
 

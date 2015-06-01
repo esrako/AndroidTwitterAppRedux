@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Esra\'s Twitter</string>
+    <string name="app_name">Esra\'s Twitter Plus</string>
     <string name="login_label">Connect to Twitter</string>
     <string name="title_activity_timeline">    Home</string>
 
@@ -11,6 +11,9 @@
     <string name="title_activity_compose">Compose</string>
     <string name="title_dialog_compose">Compose</string>
     <string name="tweet_hint">What\'s happening?</string>
+
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
 
     <string name="tweet_too_long">Please make sure your tweet is at most 140 characters</string>
     <string name="no_network">There is no network connection</string>
@@ -44,6 +47,7 @@
     <string name="tweet_button_label">TWEET</string>
     <string name="in_reply_to_text">In reply to</string>
     <string name="retweeted_text">retweeted</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 
 

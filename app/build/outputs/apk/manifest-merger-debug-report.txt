@@ -17,6 +17,8 @@ uses-sdk
 ADDED from AndroidManifest.xml:7:5
 MERGED from com.android.support:appcompat-v7:21.0.0:15:5
 MERGED from com.android.support:support-v4:21.0.0:15:5
+MERGED from com.astuetz:pagerslidingtabstrip:1.0.1:2:5
+MERGED from com.android.support:support-v4:21.0.0:15:5
 	android:targetSdkVersion
 		ADDED from AndroidManifest.xml:9:9
 		INJECTED from AndroidManifest.xml:0:0
@@ -51,6 +53,8 @@ application
 ADDED from AndroidManifest.xml:19:5
 MERGED from com.android.support:appcompat-v7:21.0.0:16:5
 MERGED from com.android.support:support-v4:21.0.0:16:5
+MERGED from com.astuetz:pagerslidingtabstrip:1.0.1:4:5
+MERGED from com.android.support:support-v4:21.0.0:16:5
 	android:label
 		ADDED from AndroidManifest.xml:23:9
 	android:allowBackup
@@ -73,7 +77,7 @@ ADDED from AndroidManifest.xml:28:9
 		ADDED from AndroidManifest.xml:29:13
 	android:value
 		ADDED from AndroidManifest.xml:30:13
-activity#com.codepath.apps.twitterclient.activities.LoginActivity
+activity#com.codepath.apps.twitterplus.activities.LoginActivity
 ADDED from AndroidManifest.xml:32:9
 	android:label
 		ADDED from AndroidManifest.xml:34:13
@@ -111,7 +115,7 @@ ADDED from AndroidManifest.xml:47:17
 		ADDED from AndroidManifest.xml:48:21
 	android:scheme
 		ADDED from AndroidManifest.xml:49:21
-activity#com.codepath.apps.twitterclient.activities.TimelineActivity
+activity#com.codepath.apps.twitterplus.activities.TimelineActivity
 ADDED from AndroidManifest.xml:52:9
 	android:label
 		ADDED from AndroidManifest.xml:54:13
@@ -119,7 +123,7 @@ ADDED from AndroidManifest.xml:52:9
 		ADDED from AndroidManifest.xml:53:13
 	android:launchMode
 		ADDED from AndroidManifest.xml:55:13
-activity#com.codepath.apps.twitterclient.activities.ComposeActivity
+activity#com.codepath.apps.twitterplus.activities.ComposeActivity
 ADDED from AndroidManifest.xml:57:9
 	android:label
 		ADDED from AndroidManifest.xml:59:13
@@ -131,9 +135,15 @@ ADDED from AndroidManifest.xml:60:13
 		ADDED from AndroidManifest.xml:61:17
 	android:value
 		ADDED from AndroidManifest.xml:62:17
-activity#com.codepath.apps.twitterclient.activities.DetailActivity
+activity#com.codepath.apps.twitterplus.activities.DetailActivity
 ADDED from AndroidManifest.xml:64:9
 	android:label
 		ADDED from AndroidManifest.xml:66:13
 	android:name
 		ADDED from AndroidManifest.xml:65:13
+activity#com.codepath.apps.twitterplus.activities.ProfileActivity
+ADDED from AndroidManifest.xml:71:9
+	android:label
+		ADDED from AndroidManifest.xml:73:13
+	android:name
+		ADDED from AndroidManifest.xml:72:13

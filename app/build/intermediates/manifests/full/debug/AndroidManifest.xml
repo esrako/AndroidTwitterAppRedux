@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.codepath.apps.restclienttemplate"
+    package="com.codepath.apps.twitterplus"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -17,7 +17,7 @@
         android:maxSdkVersion="18" />
 
     <application
-        android:name="com.codepath.apps.twitterclient.tclient.TwitterApplication"
+        android:name="com.codepath.apps.twitterplus.tclient.TwitterApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher_twitter"
         android:label="@string/app_name"
@@ -30,7 +30,7 @@
             android:value="1" />
 
         <activity
-            android:name="com.codepath.apps.twitterclient.activities.LoginActivity"
+            android:name="com.codepath.apps.twitterplus.activities.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme" >
             <intent-filter>
@@ -50,23 +50,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.codepath.apps.twitterclient.activities.TimelineActivity"
+            android:name="com.codepath.apps.twitterplus.activities.TimelineActivity"
             android:label="@string/title_activity_timeline"
             android:launchMode="singleTop" >
         </activity>
         <activity
-            android:name="com.codepath.apps.twitterclient.activities.ComposeActivity"
+            android:name="com.codepath.apps.twitterplus.activities.ComposeActivity"
             android:label="@string/title_activity_compose" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.codepath.apps.twitterclient.activities.TimelineActivity" />
+                android:value="com.codepath.apps.twitterplus.activities.TimelineActivity" />
         </activity>
         <activity
-            android:name="com.codepath.apps.twitterclient.activities.DetailActivity"
+            android:name="com.codepath.apps.twitterplus.activities.DetailActivity"
             android:label="@string/title_activity_detail" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.codepath.apps.twitterclient.activities.TimelineActivity" />
+                android:value="com.codepath.apps.twitterplus.activities.TimelineActivity" />
+        </activity>
+        <activity
+            android:name="com.codepath.apps.twitterplus.activities.ProfileActivity"
+            android:label="@string/title_activity_profile" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.codepath.apps.twitterplus.activities.TimelineActivity" />
         </activity>
     </application>
 

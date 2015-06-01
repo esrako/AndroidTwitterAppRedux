@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
@@ -18,15 +18,20 @@
     <color name="abc_search_url_text_selected">@android:color/black</color>
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <color name="aquamarine2">#76EEC6</color>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="background_floating_material_dark">#ff424242</color>
     <color name="background_floating_material_light">#ffeeeeee</color>
     <color name="background_material_dark">#ff303030</color>
     <color name="background_material_light">#ffeeeeee</color>
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.astuetz/pagerslidingtabstrip/1.0.1/res/values/values.xml -->
+    <eat-comment/>
+    <color name="background_tab_pressed">#6633B5E5</color>
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <eat-comment/>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
     <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
@@ -50,10 +55,10 @@
     <color name="material_blue_grey_950">#ff21272b</color>
     <color name="material_deep_teal_200">#ff80cbc4</color>
     <color name="material_deep_teal_500">#ff009688</color>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <color name="primary_blue">#53777A</color>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="primary_dark_material_dark">#ff000000</color>
     <color name="primary_dark_material_light">#ff757575</color>
@@ -69,14 +74,14 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <color name="simple_yellow">#ECD078</color>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>
     <color name="switch_thumb_normal_material_dark">#ffbdbdbd</color>
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <color name="twitter_blue">#55acee</color>
     <color name="white">#ffffff</color>
@@ -94,6 +99,7 @@
     <declare-styleable name="MenuGroup"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:checkableBehavior"/><attr name="android:visible"/><attr name="android:enabled"/></declare-styleable>
     <declare-styleable name="MenuItem"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:title"/><attr name="android:titleCondensed"/><attr name="android:icon"/><attr name="android:alphabeticShortcut"/><attr name="android:numericShortcut"/><attr name="android:checkable"/><attr name="android:checked"/><attr name="android:visible"/><attr name="android:enabled"/><attr name="android:onClick"/><attr name="showAsAction"><flag name="never" value="0"/><flag name="ifRoom" value="1"/><flag name="always" value="2"/><flag name="withText" value="4"/><flag name="collapseActionView" value="8"/></attr><attr format="reference" name="actionLayout"/><attr format="string" name="actionViewClass"/><attr format="string" name="actionProviderClass"/></declare-styleable>
     <declare-styleable name="MenuView"><attr name="android:itemTextAppearance"/><attr name="android:horizontalDivider"/><attr name="android:verticalDivider"/><attr name="android:headerBackground"/><attr name="android:itemBackground"/><attr name="android:windowAnimationStyle"/><attr name="android:itemIconDisabledAlpha"/><attr format="boolean" name="preserveIconSpacing"/></declare-styleable>
+    <declare-styleable name="PagerSlidingTabStrip"><attr format="color" name="pstsIndicatorColor"/><attr format="color" name="pstsUnderlineColor"/><attr format="color" name="pstsDividerColor"/><attr format="dimension" name="pstsIndicatorHeight"/><attr format="dimension" name="pstsUnderlineHeight"/><attr format="dimension" name="pstsDividerPadding"/><attr format="dimension" name="pstsTabPaddingLeftRight"/><attr format="dimension" name="pstsScrollOffset"/><attr format="reference" name="pstsTabBackground"/><attr format="boolean" name="pstsShouldExpand"/><attr format="boolean" name="pstsTextAllCaps"/></declare-styleable>
     <declare-styleable name="PopupWindow"><attr format="boolean" name="overlapAnchor"/><attr name="android:popupBackground"/></declare-styleable>
     <declare-styleable name="PopupWindowBackgroundState"><attr format="boolean" name="state_above_anchor"/></declare-styleable>
     <declare-styleable name="SearchView"><attr format="reference" name="layout"/><attr format="boolean" name="iconifiedByDefault"/><attr name="android:maxWidth"/><attr format="string" name="queryHint"/><attr name="android:imeOptions"/><attr name="android:inputType"/><attr format="reference" name="closeIcon"/><attr format="reference" name="goIcon"/><attr format="reference" name="searchIcon"/><attr format="reference" name="voiceIcon"/><attr format="reference" name="commitIcon"/><attr format="reference" name="suggestionRowLayout"/><attr format="reference" name="queryBackground"/><attr format="reference" name="submitBackground"/><attr name="android:focusable"/></declare-styleable>
@@ -103,7 +109,7 @@
     <declare-styleable name="Toolbar"><attr format="reference" name="titleTextAppearance"/><attr format="reference" name="subtitleTextAppearance"/><attr name="title"/><attr name="subtitle"/><attr name="android:gravity"/><attr format="dimension" name="titleMargins"/><attr format="dimension" name="titleMarginStart"/><attr format="dimension" name="titleMarginEnd"/><attr format="dimension" name="titleMarginTop"/><attr format="dimension" name="titleMarginBottom"/><attr name="contentInsetStart"/><attr name="contentInsetEnd"/><attr name="contentInsetLeft"/><attr name="contentInsetRight"/><attr format="dimension" name="maxButtonHeight"/><attr format="reference" name="theme"/><attr name="buttonGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/></attr><attr format="reference" name="collapseIcon"/><attr name="popupTheme"/><attr format="reference" name="navigationIcon"/><attr format="string" name="navigationContentDescription"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="abc_action_bar_default_height_material">56dp</dimen>
     <dimen name="abc_action_bar_default_padding_material">4dp</dimen>
@@ -142,11 +148,11 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/values/dimens.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>
     <item name="dialog_fixed_height_major" type="dimen">80%</item>
     <item name="dialog_fixed_height_minor" type="dimen">100%</item>
@@ -179,10 +185,10 @@
     <string name="abc_searchview_description_voice">Voice search</string>
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/values/strings.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="action_settings">Settings</string>
-    <string name="app_name">Esra\'s Twitter</string>
+    <string name="app_name">Esra\'s Twitter Plus</string>
     <string name="dummy">Dummy</string>
     <string name="failed_to_favorite">Something went wrong with favoriting the tweet. Please try again later.</string>
     <string name="failed_to_fetch_tweets">Something went wrong with fetching tweets from Twitter.</string>
@@ -192,6 +198,8 @@
     <string name="failed_to_unfavorite">Something went wrong with unfavoriting the tweet. Please try again later.</string>
     <string name="failed_to_unretweet">Something went wrong with un-retweeting. Please try again later.</string>
     <string name="favorites_label">FAVORITES</string>
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="hello_world">Hello world!</string>
     <string name="image_load_failed">Failed to load the image</string>
@@ -209,13 +217,14 @@
     <string name="success_on_unretweet">Succesfully un-retweeted</string>
     <string name="title_activity_compose">Compose</string>
     <string name="title_activity_detail">Tweet</string>
+    <string name="title_activity_profile">ProfileActivity</string>
     <string name="title_activity_timeline">    Home</string>
     <string name="title_dialog_compose">Compose</string>
     <string name="title_dialog_reply">Reply</string>
     <string name="tweet_button_label">TWEET</string>
     <string name="tweet_hint">What\'s happening?</string>
     <string name="tweet_too_long">Please make sure your tweet is at most 140 characters</string>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/MyActionBar</item>
@@ -225,7 +234,7 @@
         <item name="actionBarStyle">@style/MyActionBar</item>
         <item name="actionBarTabTextStyle">@style/MyActionBarTabText</item>
     </style>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance">
         <item name="android:textColor">?android:textColorPrimary</item>
@@ -985,7 +994,7 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
         <item name="android:scaleType">center</item>
         <item name="android:background">?attr/selectableItemBackground</item>
     </style>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/src/main/res/values/styles.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/src/main/res/values/styles.xml -->
     <eat-comment/>
     <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@color/twitter_blue</item>
@@ -1001,7 +1010,7 @@ m>        <item name="android:textColorLink">@color/link_text_material_dark</ite
     <style name="MyActionBarTabText" parent="@style/Widget.AppCompat.ActionBar.TabText">
         <item name="android:textColor">@color/white</item>
     </style>
-    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterClient/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
+    <!-- From: file:/C:/Users/ekucukog.ORADEV/AndroidStudioProjects/TwitterPlus/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme">
         <item name="android:windowNoTitle">true</item>

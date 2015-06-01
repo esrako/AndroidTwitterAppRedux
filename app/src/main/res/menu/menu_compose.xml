@@ -1,7 +1,15 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.codepath.apps.twitterclient.activities.ComposeActivity">
+    tools:context="com.codepath.apps.twitterplus.activities.ComposeActivity">
+
+    <item
+        android:id="@+id/miActionProgress"
+        android:title="Loading..."
+        android:visible="false"
+        app:showAsAction="ifRoom"
+        app:actionLayout="@layout/action_view_progress" />
+
 
     <item
         android:id="@+id/miCounter"

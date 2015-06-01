@@ -1,28 +1,30 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.codepath.apps.twitterclient.activities.TimelineActivity"
+    tools:context="com.codepath.apps.twitterplus.activities.TimelineActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#ffffff">
 
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swipeContainer"
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs"
+        app:pstsShouldExpand="true"
+        app:pstsTextAllCaps="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="48dp"
+        android:textColor="#ffffff"
+        app:pstsDividerColor="#ffffff"
+        app:pstsIndicatorColor="#0BB5FF"
+        app:pstsUnderlineColor="#00688B"
+        app:pstsTabPaddingLeftRight="14dp"
+        android:background="#55acee">
+    </com.astuetz.PagerSlidingTabStrip>
 
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/lvTweets"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentTop="true" />
-
-    </android.support.v4.widget.SwipeRefreshLayout>
-
-
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:layout_below="@id/tabs"
+        />
 </RelativeLayout>
