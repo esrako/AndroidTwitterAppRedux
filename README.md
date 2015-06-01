@@ -1,5 +1,5 @@
 # AndroidTwitterAppRedux
-This app is an android app that allows a Twitter user to login, view home and mentions timelines, view user profiles with user timelines, compose and post a new tweet, as well as retweet/reply/favorite/unfavorite tweets. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public). What is new in my TwitterRedux compared to my [Twitter](https://github.com/esrako/AndroidTwitterApp/)? The use use of fragments, tabs, and progress bar for network requests.
+This app is an android app that allows a Twitter user to login, view home and mentions timelines, view user profiles with user timelines, compose and post a new tweet, as well as retweet/reply/favorite/unfavorite tweets. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public). What is new in my TwitterRedux compared to my [Twitter](https://github.com/esrako/AndroidTwitterApp/)? The use of fragments, tabs, and progress bar for network requests.
 
 
 Time spent: 20 hours spent in total in addition to 50 hours spent on this [Twitter App](https://github.com/esrako/AndroidTwitterApp/)
