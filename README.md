@@ -1,5 +1,5 @@
 # AndroidTwitterAppRedux
-This app is an android app that allows a Twitter user to login, view home and mentions timelines, view user profiles with user timelines, compose and post a new tweet, as well as retweet/reply/favorite/unfavorite tweets. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public). What is new in my TwitterRedux compared to my [Twitter](https://github.com/esrako/AndroidTwitterApp/)? The use of fragments, tabs, and progress bar for network requests.
+This app is fragment based android app that allows a Twitter user to login, view home and mentions timelines, view user profiles with user timelines, compose and post a new tweet, as well as retweet/reply/favorite/unfavorite tweets. The app utilizes [Twitter REST API](https://dev.twitter.com/rest/public). What is new in my TwitterRedux compared to my [Twitter](https://github.com/esrako/AndroidTwitterApp/)? The use of fragments, tabs, and progress bar for network requests.
 
 
 Time spent: 20 hours spent in total in addition to 50 hours spent on this [Twitter App](https://github.com/esrako/AndroidTwitterApp/)
@@ -40,12 +40,15 @@ The following **additional** features are implemented:
 * [x] Use of ViewHolder pattern and Parcelable to improve app performance
 * [x] Organizing the code through packages and externalizing all string resources into strings.xml
 * [x] User can take **un-retweet** action on a tweet
+* [x] User can take the mentioned actions(reply/retweet/unretweet/fav/unfavorite) from any page he sees a tweet: detail page, home timeline, mentions, his profile or other user's timeline
 * [x] User can see **retweet count** and **favorites count** for each tweet/
 * [x] User can see an indicator text to distinguish if the tweet is a **retweet** or a **reply** for each tweet.
 * [x] User can see embedded image media within the tweet detail view
 * [x] Vertically **scrollable** detail view. 
 * [x] User can **pull down to refresh tweets timeline**
 * [x] User can **see a counter with total number of characters left for tweet** on compose tweet page
+* [x] Persistence: Tweets are saved in local database
+* [x] User can **click a link within a tweet body** on tweet details view. The click will launch the web browser with relevant page opened.
 
 ## Video Walkthrough 
 
