@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * Created by ekucukog on 5/29/2015.
  */
-public abstract class TweetsListFragment extends Fragment implements TweetsArrayAdapter.MyFavListener {
+public abstract class TweetsListFragment extends Fragment{
 
     private ArrayList<Tweet> tweets;
     private TweetsArrayAdapter aTweets;
@@ -63,6 +63,7 @@ public abstract class TweetsListFragment extends Fragment implements TweetsArray
         //set up endless scroll listener for listview
         setUpListenerForListView();
         setUpSwipeContainer();
+        setUpTAAFragmentListener();
 
         return v;
     }
@@ -88,12 +89,6 @@ public abstract class TweetsListFragment extends Fragment implements TweetsArray
         void onFinishNetworkCall();
     }
 
-/*
-    public void addAll(List<Tweet> tweetss){
-        aTweets.addAll(tweetss);
-    }
-*/
-
     public TweetsArrayAdapter getAdapter(){
         return aTweets;
     }
@@ -109,7 +104,6 @@ public abstract class TweetsListFragment extends Fragment implements TweetsArray
             tweetToBeUpdated.setCurrent_user_retweet_id_str(tweetChanged.getCurrent_user_retweet_id_str());
             aTweets.notifyDataSetChanged();
         }
-
     }
 
     private void setUpSwipeContainer() {
@@ -161,33 +155,123 @@ public abstract class TweetsListFragment extends Fragment implements TweetsArray
 
     public abstract void populateTimeline(int refType, long offset);
 
-    public void onFavCall(final Tweet tweet) {
+    public void setUpTAAFragmentListener(){
+        aTweets.setTAAFragmentListener(new TweetsArrayAdapter.TAAFragmentListener() {
+            @Override
+            public void onClickToFavorite(final int position) {
+                if (!TwitterUtil.isThereNetworkConnection(getActivity())) {
+                    Log.e("ERROR", "no network");
+                    Toast.makeText(getActivity(), R.string.no_network, Toast.LENGTH_LONG).show();
+                } else {
 
+                    Tweet tweet = (Tweet) aTweets.getItem(position);
+                    long tweetID = tweet.getUid();
+                    if (!tweet.isFavorited()) {//it is not favorited yet, go and favorite
 
-        long tweetID = tweet.getUid();
-        /*if (!tweet.isFavorited()) {//it is not favorited yet, go and favorite
+                        client.makeFavorite(tweetID, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                                Log.d("DEBUG", jsonObject.toString());
+                                Tweet tweet = (Tweet) aTweets.getItem(position);
+                                int newFC = tweet.getFavorite_count() + 1;
+                                tweet.setFavorited(true);
+                                tweet.setFavorite_count(newFC);
+                                aTweets.notifyDataSetChanged();
+                                Toast.makeText(getActivity(), R.string.success_on_favorite, Toast.LENGTH_SHORT).show();
+                            }
 
-            int newFC = tweet.getFavorite_count() + 1;
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                Log.e("ERROR", errorResponse.toString());
+                                Toast.makeText(getActivity(), R.string.failed_to_favorite, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {//unfavorite
 
-            client.makeFavorite(tweetID, new JsonHttpResponseHandler() {
-                @Override
-                public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
-                    Log.d("DEBUG", jsonObject.toString());
-                    int newFC = tweet.getFavorite_count() + 1;
-                    tweet.setFavorited(true);
-                    tweet.setFavorite_count(newFC);
-                    Toast.makeText(getActivity(), R.string.success_on_favorite, Toast.LENGTH_SHORT).show();
+                        client.removeFavorite(tweetID, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                                Log.d("DEBUG", jsonObject.toString());
+                                Tweet tweet = (Tweet) aTweets.getItem(position);
+                                int newFC = tweet.getFavorite_count() - 1;
+                                tweet.setFavorited(false);
+                                tweet.setFavorite_count(newFC);
+                                aTweets.notifyDataSetChanged();
+                                Toast.makeText(getActivity(), R.string.success_on_unfavorite, Toast.LENGTH_SHORT).show();
+                            }
 
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                Log.e("ERROR", errorResponse.toString());
+                                Toast.makeText(getActivity(), R.string.failed_to_unfavorite, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    }
                 }
+            }
 
-                @Override
-                public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    Log.e("ERROR", errorResponse.toString());
-                    //viewHolder.tvFavsAction.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_star_grey, 0, 0, 0);
-                    //viewHolder.tvFavsAction.setText("" + tweet.getFavorite_count());
-                    Toast.makeText(getActivity(), R.string.failed_to_favorite, Toast.LENGTH_LONG).show();
+            @Override
+            public void onClickToRetweet(final int position) {
+                if (!TwitterUtil.isThereNetworkConnection(getActivity())) {
+                    Log.e("ERROR", "no network");
+                    Toast.makeText(getActivity(), R.string.no_network, Toast.LENGTH_LONG).show();
+                } else {
+
+                    Tweet tweet = (Tweet) aTweets.getItem(position);
+                    long tweetID = tweet.getUid();
+                    String retweetIDstr = tweet.getCurrent_user_retweet_id_str();
+
+                    if (!tweet.isRetweeted()) {//not retweeted before, retweet now
+
+                        client.retweet(tweetID, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                                Log.d("DEBUG", jsonObject.toString());
+
+                                Tweet tweet = (Tweet) aTweets.getItem(position);
+                                int newRC = tweet.getRetweet_count() + 1;
+                                tweet.setRetweeted(true);
+                                tweet.setRetweet_count(newRC);
+                                Tweet updatedTweet = Tweet.fromJson(jsonObject);
+                                //tweet.setCurrent_user_retweet_id_str(updatedTweet.getCurrent_user_retweet_id_str());
+                                tweet.setCurrent_user_retweet_id_str(updatedTweet.getId_str_x());
+                                aTweets.notifyDataSetChanged();
+                                Toast.makeText(getActivity(), R.string.success_on_retweet, Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                Log.e("ERROR", errorResponse.toString());
+                                Toast.makeText(getActivity(), R.string.failed_to_retweet, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else if (retweetIDstr != null) {//was already retweeted, now destroy retweet
+
+                        Log.d("DEBUG", "retweet id str: " + retweetIDstr);
+                        client.destroyRetweet(retweetIDstr, new JsonHttpResponseHandler() {
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject jsonObject) {
+                                Log.d("DEBUG", jsonObject.toString());
+                                Tweet tweet = (Tweet) aTweets.getItem(position);
+                                int newRC = tweet.getRetweet_count() - 1;
+                                tweet.setRetweeted(false);
+                                tweet.setRetweet_count(newRC);
+                                aTweets.notifyDataSetChanged();
+                                Toast.makeText(getActivity(), R.string.success_on_unretweet, Toast.LENGTH_SHORT).show();
+                            }
+
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                Log.e("ERROR", errorResponse.toString());
+                                Toast.makeText(getActivity(), R.string.failed_to_unretweet, Toast.LENGTH_LONG).show();
+                            }
+                        });
+                    } else {
+                        Log.d("DEBUG", "retweet id was null");
+                        Toast.makeText(getActivity(), R.string.failed_to_unretweet, Toast.LENGTH_LONG).show();
+                    }
                 }
-            });
-        }*/
+            }
+        });
     }
 }

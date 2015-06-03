@@ -87,15 +87,18 @@ public class HomeTimelineFragment extends TweetsListFragment {
 
             final int refreshType = refType;
 
-            //TweetsListFragmentListener listener = (TweetsListFragmentListener) getActivity();
-            //listener.onStartNetworkCall();
+            TweetsListFragmentListener tlFragmentListener = (TweetsListFragmentListener) getActivity();
+            if(tlFragmentListener!=null){
+                tlFragmentListener.onStartNetworkCall();
+            }
             client.getHomeTimeLine(refreshType, offset, new JsonHttpResponseHandler() {
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, JSONArray jsonArray) {
-                    //TweetsListFragmentListener listener = (TweetsListFragmentListener) getActivity();
-                    //listener.onFinishNetworkCall();
+                    TweetsListFragmentListener tlFragmentListener = (TweetsListFragmentListener) getActivity();
+                    if(tlFragmentListener!=null){
+                        tlFragmentListener.onFinishNetworkCall();
+                    }
                     Log.d("DEBUG", jsonArray.toString());
-
                     usingLocalData = false;
                     if (refreshType == TwitterUtil.SWIPE) {
                         // Now we call setRefreshing(false) to signal refresh has finished
@@ -118,8 +121,10 @@ public class HomeTimelineFragment extends TweetsListFragment {
 
                 @Override
                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                    //TweetsListFragmentListener listener = (TweetsListFragmentListener) getActivity();
-                    //listener.onFinishNetworkCall();
+                    TweetsListFragmentListener tlFragmentListener = (TweetsListFragmentListener) getActivity();
+                    if(tlFragmentListener!=null){
+                        tlFragmentListener.onFinishNetworkCall();
+                    }
                     Log.e("ERROR", errorResponse.toString());
                     if (refreshType == TwitterUtil.SWIPE) {
                         swipeContainer.setRefreshing(false);

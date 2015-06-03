@@ -178,6 +178,16 @@ public class Tweet extends Model implements Parcelable {
                 .execute();
     }
 
+    //not tested
+    public static List<Tweet> getAllFromDB(String type) {
+        // This is how you execute a query
+        return new Select()
+                .from(Tweet.class)
+                .where("type = ?", type)
+                .orderBy("remote_id DESC")
+                .execute();
+    }
+
     public int getFavorite_count() {
         return favorite_count;
     }
